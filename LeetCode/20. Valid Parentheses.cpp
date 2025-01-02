@@ -28,3 +28,10 @@ public:
 		return ans;
 	}
 };
+int main() {
+	string s;
+	cin >> s;
+	Solution soln;
+	bool check = soln.isValid(s);
+	cout << check;
+}
