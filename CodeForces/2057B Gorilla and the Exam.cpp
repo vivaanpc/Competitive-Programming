@@ -6,23 +6,21 @@ typedef long long ll;
 void solve() {
     int n, k;
     cin >> n >> k;
-    // vector<int> a(n);
-    unordered_map<int, int> count;
+    map<int, int> count;
     int a;
     for (int i = 0; i < n; i++) {
         cin >> a;
         count[a]++;
-        // cout << a;
     }
     vector<int> freq;
     for (auto& entry : count) {
-        // cout << entry.second << "\n";
         freq.push_back(entry.second);
     }
+    freq.resize(freq.size()); /*somehow passes the cases without TLE when commented out
+    on local machine compilation time went from 4.0 to 3.2; 3.6 -> 2.9*/
     sort(freq.begin(), freq.end());
     int countMinus = 0;
     for (int i = 0; i < freq.size(); i++) {
-        // cout << freq[i] << " ";
         if (k >= freq[i]) {
             k -= freq[i];
             countMinus++;
@@ -31,7 +29,6 @@ void solve() {
             break;
         }
     }
-    // cout << freq.size() << " " << countMinus << "\n";
     if (k >= 0) {
         cout << 1 << "\n";
     } else {
