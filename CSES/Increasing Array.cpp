@@ -2,20 +2,30 @@
 //vivaanpc
 using namespace std;
 //vivaanpc
-int main() {
+typedef long long ll;
+void solve() {
 	int n;
 	cin >> n;
 	vector<int> v(n);
-	long long count = 0;
-	for (int i = 0; i < n; i++) {
+	cin >> v[0];
+	ll ans = 0;
+	for (int i = 1; i < n; i++) {
 		cin >> v[i];
-		if (i >= 1) {
-			if (v[i] < v[i - 1]) {
-				count += v[i - 1] - v[i];
-				v[i] = v[i - 1];
-			}
+		if (v[i] < v[i - 1]) {
+			ans += v[i - 1] - v[i];
+			v[i] = v[i - 1];
 		}
 	}
-	cout << count;
+	cout << ans << endl;
+}
+//vivaanpc
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int t = 1;
+	// cin >> t;
+	while (t--) {
+		solve();
+	}
 	return 0;
 }
