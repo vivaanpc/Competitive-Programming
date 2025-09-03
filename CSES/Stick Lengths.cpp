@@ -5,17 +5,18 @@ using namespace std;
 typedef long long ll;
 const int mod = 1e9 + 7;
 void solve() {
-	int n, count = 1;
+	int n;
 	cin >> n;
-	vector<int> v(n), pos(n + 1);
+	vector<ll> v(n);
 	for (int i = 0; i < n; i++) {
 		cin >> v[i];
-		pos[v[i]] = i;
 	}
-	for (int i = 1; i < n; i++) {
-		if (pos[i] > pos[i + 1]) count++;
+	sort(v.begin(), v.end());
+	ll count = 0;
+	for (int i = 0; i < v.size(); i++) {
+		count += abs(v[i] - v[n / 2]);
 	}
-	cout << count << "\n";
+	cout << count;
 }
 //vivaanpc
 int main() {
