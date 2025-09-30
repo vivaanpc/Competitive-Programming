@@ -8,20 +8,20 @@ const double eps = 1e-12;
 void solve() {
     int n, k;
     cin >> n >> k;
-    vector<int> v(n), dp(k + 1);
+    vector<int> v(n), dp(k + 1, 0);
     for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
     dp[0] = 1;
-    for (const auto& x : v) {
-        for (int i = 0; i <= k; i++) {
-            if (i - x > 0) {
-                dp[i] += dp[i - x];
+    for (int i = 0; i <= k; i++) {
+        for (const auto& x : v) {
+            if (i + x <= k) {
+                dp[i + x] = (dp[i + x] + dp[i]) % mod;
             }
         }
     }
-    for (auto i : dp) cout << i << " ";
-    // cout << dp[k];
+    // for (auto i : dp) cout << i << " ";
+    cout << dp[k];
 }
 //vivaanpc
 int main() {
