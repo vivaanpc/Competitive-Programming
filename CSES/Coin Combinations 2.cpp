@@ -20,8 +20,7 @@ void solve() {
             }
         }
     }
-    for (auto i : dp) cout << i << " ";
-    // cout << dp[k];
+    cout << dp[k];
 }
 //vivaanpc
 int main() {
