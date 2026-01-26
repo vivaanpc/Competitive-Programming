@@ -15,21 +15,18 @@ public:
 	vector<vector<int>> minimumAbsDifference(vector<int>& v) {
 		vector<pair<int, int>> pr;
 		sort(v.begin(), v.end());
+		vector<vector<int>> ans;
 		int mini = INT_MAX;
 		for (int i = 0; i < v.size() - 1; i++) {
-			if (abs(v[i] - v[i + 1]) <= mini ) {
-				if (abs(v[i] - v[i + 1]) < mini) {
-					pr.clear();
-					mini = abs(v[i] - v[i + 1]);
-					pr.push_back({v[i], v[i + 1]});
+			if (v[i + 1] - v[i] <= mini ) {
+				if (v[i + 1] - v[i] < mini) {
+					ans.clear();
+					mini = v[i + 1] - v[i];
+					ans.push_back({v[i], v[i + 1]});
 				} else {
-					pr.push_back({v[i], v[i + 1]});
+					ans.push_back({v[i], v[i + 1]});
 				}
 			}
-		}
-		vector<vector<int>> ans;
-		for (int i = 0; i < pr.size(); i++) {
-			ans.push_back({pr[i].first, pr[i].second});
 		}
 		return ans;
 	}
